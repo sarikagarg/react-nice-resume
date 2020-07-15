@@ -8,6 +8,9 @@ import About from './Components/About';
 import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 import Portfolio from './Components/Portfolio';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import AboutPage from './pages/about/about';
+import ResumePage from './pages/resume/resume';
 
 class App extends Component {
 
@@ -52,14 +55,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header data={this.state.resumeData.main}/>
-        <About data={this.state.resumeData.main}/>
-        <Resume data={this.state.resumeData.resume}/>
-        <Portfolio data={this.state.resumeData.portfolio}/>
-        <Contact data={this.state.resumeData.main}/>
-        <Footer data={this.state.resumeData.main}/>
-      </div>
+      <Router className="app">
+        <Header data={this.state.resumeData.main} />
+        <Switch>
+          <Route path="/aboutus">
+            <AboutPage></AboutPage>
+          </Route>
+          <Route path="/resume">
+            <ResumePage></ResumePage>
+          </Route>
+          <Route path="/">
+        
+            <Portfolio data={this.state.resumeData.portfolio} />
+          </Route>
+        </Switch>
+                <Footer data={this.state.resumeData.main} />
+      </Router>
     );
   }
 }
