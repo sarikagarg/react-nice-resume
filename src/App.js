@@ -40,6 +40,14 @@ class App extends Component {
 
   componentDidMount(){
     this.getResumeData();
+    
+    let viewName = 'home';
+    let adobe = window['adobe'];
+ 
+    // Validate if the Target Libraries are available on your website
+    if (typeof adobe != 'undefined' && adobe.target && typeof adobe.target.triggerView === 'function') {
+      adobe.target.triggerView(viewName);
+    }
   }
 
   render() {
