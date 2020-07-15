@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 import "./about.css";
 
 class AboutPage extends Component {
+
+    
+  constructor(props){
+    super(props);
+    };
+    
+  componentDidMount(){
+       
+    let viewName = 'about';
+    let adobe = window['adobe'];
+ 
+    // Validate if the Target Libraries are available on your website
+    if (typeof adobe != 'undefined' && adobe.target && typeof adobe.target.triggerView === 'function') {
+      adobe.target.triggerView(viewName);
+    }
+  }
+
+
+
   render() {
 
     if(this.props.data){

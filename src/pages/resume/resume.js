@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 
 class ResumePage extends Component {
 
+    
+  constructor(props){
+    super(props);
+    };
+    
+  componentDidMount(){
+       
+    let viewName = 'resume';
+    let adobe = window['adobe'];
+ 
+    // Validate if the Target Libraries are available on your website
+    if (typeof adobe != 'undefined' && adobe.target && typeof adobe.target.triggerView === 'function') {
+      adobe.target.triggerView(viewName);
+    }
+  }
+
   getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
